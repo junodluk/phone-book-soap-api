@@ -1,0 +1,46 @@
+{
+  "name": "phone-book-soap-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog",
+      "types": {
+        "feat": {
+          "description": "New features",
+          "title": "Features"
+        },
+        "fix": {
+          "description": "Bug fixes",
+          "title": "Bug fixes"
+        },
+        "docs": {
+          "description": "Documentation (e.g. readme)",
+          "title": "Documentation"
+        },
+        "refactor": {
+          "description": "Source code improvement that does not change functionality and is not a fix",
+          "title": "Code Refactoring"
+        },
+        "test": {
+          "description": "Adding test specs",
+          "title": "Tests"
+        },
+        "chore": {
+          "description": "Change that does not affect the application source code (e.g. build)",
+          "title": "Chores"
+        }
+      }
+    }
+  }
+}
