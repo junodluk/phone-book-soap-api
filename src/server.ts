@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import cors from "cors";
 import express from "express";
 import { ContactDTO, create, readOne, list, update, deleteOne } from "./models/contact";
 
@@ -7,6 +8,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -27,8 +29,9 @@ app.post("/contact", async (req, res) => {
 
 app.get("/contact", async (req, res) => {
     try {
-        const contacts = await list();
-        res.json(contacts);
+        const filterLastName = req.query.lastName as string;
+        const contactList = await list(filterLastName);
+        res.json(contactList);
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal server error");
@@ -66,7 +69,7 @@ app.delete("/contact/:id", async (req, res) => {
     try {
         const id: number = parseInt(req.params.id);
         await deleteOne(id);
-        res.status(200).send(id);
+        res.sendStatus(200);
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal server error");
